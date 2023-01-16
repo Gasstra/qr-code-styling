@@ -8,6 +8,7 @@ import defaultOptions, { RequiredOptions } from "./QROptions";
 import sanitizeOptions from "../tools/sanitizeOptions";
 import { FileExtension, QRCode, Options, DownloadOptions, ExtensionFunction } from "../types";
 import qrcode from "qrcode-generator";
+import {Base64} from "js-base64";
 
 export default class QRCodeStyling {
   _options: RequiredOptions;
@@ -58,8 +59,8 @@ export default class QRCodeStyling {
 
       const svg = this._svg;
       const xml = new XMLSerializer().serializeToString(svg);
-      const svg64 = btoa(xml);
-      const image64 = "data:image/png+xml;base64," + svg64;
+      const svg64 = Base64.encode(xml);
+      const image64 = "data:image/png;base64," + svg64;
       const image = new Image();
 
       return new Promise((resolve) => {
