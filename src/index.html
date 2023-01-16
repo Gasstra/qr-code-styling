@@ -8,10 +8,11 @@
         <div id="canvas"></div>
         <script type="text/javascript">
             const options = {
-              shape: "circle",
+              // shape: "circle",
+                margin: 90,
               // type: 'svg',
-              width: 500,
-              height: 500,
+              width: 300,
+              height: 300,
               data: "h",
               image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
               dotsOptions: {
@@ -42,6 +43,19 @@
               }
             };
             const qrCode = new QRCodeStyling(options);
+            qrCode.applyExtension((svg, options) => {
+                const svgTextElement = document.createElementNS(
+                    'http://www.w3.org/2000/svg',
+                    'text',
+                );
+                svgTextElement.textContent = "aasdsdasdasd";
+                svgTextElement.setAttribute('y', '70');
+                svgTextElement.setAttribute('x', '0');
+                svgTextElement.setAttribute('font-family', 'Roboto');
+                svgTextElement.setAttribute('font-size', '32');
+                svg.appendChild(svgTextElement);
+                console.log(svg);
+            });
 
             qrCode.append(document.getElementById("canvas"));
         </script>
