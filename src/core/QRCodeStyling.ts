@@ -60,7 +60,7 @@ export default class QRCodeStyling {
       const svg = this._svg;
       const xml = new XMLSerializer().serializeToString(svg);
       const svg64 = Base64.encode(xml);
-      const image64 = "data:image/png;base64," + svg64;
+      const image64 = "data:image/svg+xml;base64," + svg64;
       const image = new Image();
 
       return new Promise((resolve) => {
