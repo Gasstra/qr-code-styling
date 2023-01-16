@@ -1,6 +1,7 @@
 import { RequiredOptions } from "./QROptions";
 import { QRCode, FilterFunction, Gradient } from "../types";
 export default class QRSVG {
+    _style: SVGElement;
     _element: SVGElement;
     _defs: SVGElement;
     _backgroundClipPath?: SVGElement;

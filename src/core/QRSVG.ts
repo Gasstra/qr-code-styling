@@ -30,6 +30,7 @@ const dotMask = [
 ];
 
 export default class QRSVG {
+  _style: SVGElement;
   _element: SVGElement;
   _defs: SVGElement;
   _backgroundClipPath?: SVGElement;
@@ -46,8 +47,15 @@ export default class QRSVG {
     this._element.setAttribute("width", String(options.width));
     this._element.setAttribute("height", String(options.height));
     this._defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    this._style = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'style',
+    );
+    this._style.setAttribute('type', 'text/css');
+    this._style.textContent =
+      "@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');";
+    this._defs.appendChild(this._style);
     this._element.appendChild(this._defs);
-
     this._options = options;
   }
 
